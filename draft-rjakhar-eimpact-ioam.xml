@@ -25,8 +25,8 @@
 
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
-  category="info"
-  docName="draft-rfcxml-general-template-standard-00"
+  category="exp"
+  docName="draft-rjakhar-eimpact-ioam-00"
   ipr="trust200902"
   obsoletes=""
   updates=""
@@ -43,37 +43,36 @@
 -->
 
   <front>
-    <title abbrev="Abbreviated Title">Title [REPLACE]</title>
+    <title abbrev="IOAM E-Impact Extensions">IOAM Extensions for Environmental Information</title>
     <!--  [REPLACE/DELETE] abbrev. The abbreviated title is required if the full title is longer than 39 characters -->
 
     <seriesInfo name="Internet-Draft" value="draft-rfcxml-general-template-standard-00 [REPLACE]"/>
    
-    <author fullname="fullname [REPLACE]" initials="Initials [REPLACE]" role="editor" surname="Surname [REPLACE]">
-      <!-- [CHECK]
-             * initials should not include an initial for the surname
-             * role="editor" is optional -->
-    <!-- Can have more than one author -->
-      
-    <!-- all of the following elements are optional -->
-      <organization>Organization [REPLACE/DELETE]</organization>
+    <author fullname="Romika Jakhar" initials="R." role="editor" surname="Jakhar">
+     <organization abbrev="NC State University">North Carolina State University</organization>
+
       <address>
         <postal>
-          <!-- Reorder these if your country does things differently -->
-          <street>Street [REPLACE/DELETE]</street>
-          <city>City [REPLACE/DELETE]</city>
-          <region>Region [REPLACE/DELETE]</region>
-          <code>Postal code [REPLACE/DELETE]</code>
-          <country>Country [REPLACE/DELETE]</country>
-          <!-- Uses two letter country code -->
+          <country>US</country>
         </postal>        
-        <phone>Phone [REPLACE/DELETE]</phone>
-        <email>Email [REPLACE/DELETE]</email>  
-        <!-- Can have more than one <email> element -->
-        <uri>URI [REPLACE/DELETE]</uri>
+        <email>romjakhar@gmail.com</email>
+        <email>rjakhar@ncsu.edu</email>
+      </address>
+    </author>
+
+    <author fullname="Carlos Pignataro" initials="C." surname="Pignataro">
+      <organization abbrev="NC State University">North Carolina State University</organization>
+
+      <address>
+        <postal>
+          <country>US</country>
+        </postal>        
+        <email>cpignata@gmail.com</email>
+        <email>cmpignat@ncsu.edu</email>
       </address>
     </author>
    
-    <date year="2023"/>
+    <date />
     <!-- On draft subbmission:
          * If only the current year is specified, the current day and month will be used.
          * If the month and year are both specified and are the current ones, the current day will
@@ -92,7 +91,19 @@
          use by search engines. -->
 
     <abstract>
-      <t>Abstract [REPLACE]</t>
+      <t>
+      This document defines a data structure that can be appended to selected
+      IOAM messages. The IOAM extension defined herein can be used to
+      gain visibility on environmental impact information on the Internet by providing
+      per-hop (i.e., per topological network node) power metrics
+      and other current or future sustainability metrics. This will contribute to achieving
+      an objective mentioned in the IAB E-Impact workshop.
+      </t>
+      <t>
+      The techniques presented are useful not only in a transactional setting (e.g., a user-issued traceroute or a ping request), but also in a scheduled automated 
+      setting where they may be run periodically in a mesh across an administrative domain to map out environmental-impact
+      metrics.
+      </t>
     </abstract>
  
   </front>
