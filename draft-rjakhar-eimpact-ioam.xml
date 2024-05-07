@@ -145,7 +145,8 @@
         <?rfc subcompact="no" ?>
       </t>
     </section>
-      
+
+    <section title="Conventions">            
       <section>
         <name>Requirements Language</name>
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
@@ -156,7 +157,6 @@
           all capitals, as shown here.</t>
       </section>
       <!-- [CHECK] The 'Requirements Language' section is optional -->
-
     </section>
     
     <section>
