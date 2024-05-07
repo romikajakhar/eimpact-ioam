@@ -101,8 +101,7 @@
       </t>
       <t>
       The techniques presented are useful not only in a transactional setting (e.g., a user-issued traceroute or a ping request), but also in a scheduled automated 
-      setting where they may be run periodically in a mesh across an administrative domain to map out environmental-impact
-      metrics.
+      setting where they may be run periodically in a mesh across an administrative domain to map out environmental-impact metrics.
       </t>
     </abstract>
  
@@ -112,7 +111,7 @@
     
     <section anchor="intro" title="Introduction">
       <t>
-        In situ Operations, Administration, and Maintenance (IOAM) <xref target="RFC09197" /> 
+        In situ Operations, Administration, and Maintenance (IOAM) <xref target="RFC9197" /> 
         collects operational and telemetry information in the packet while the packet
         traverses a path between two points in the network.  The term "in situ" 
         refers to the fact that the OAM data is added to the data packets 
