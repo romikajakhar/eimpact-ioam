@@ -110,9 +110,41 @@
 
   <middle>
     
-    <section>
-      <name>Introduction</name>
-      <t>Introductory text [REPLACE]</t>
+    <section anchor="intro" title="Introduction">
+      <t>
+        In situ Operations, Administration, and Maintenance (IOAM) <xref target="RFC09197" /> 
+        collects operational and telemetry information in the packet while the packet
+        traverses a path between two points in the network.  The term "in situ" 
+        refers to the fact that the OAM data is added to the data packets 
+        rather than being sent within packets specifically dedicated to OAM.
+        IOAM is used to complement mechanisms, such as Ping or Traceroute.
+      </t>
+      <t>
+        As the world transitions towards sustainability in technology, the focus 
+        is shifting not only on creating modern technologies infused with 
+        sustainability but also on bridging gaps in the tools that are already 
+        available, to enhance visibility, measurement, and quantification of 
+        their impact. Consequently, tools which have been foundational 
+        for control and management for decades now encounter new 
+        requirements including enhancing them to cater to a significantly 
+        increasing demand for monitoring the sustainability and environmental 
+        impact. This document serves that need by defining an IOAM extension 
+        object that appends environmental impact information to IOAM messages.
+      </t>
+      <t>
+        Using the extension defined herein, a device can explicitly append
+        these exemplary environmental impact metrics for transmission across an 
+        administrative domain:
+        <?rfc subcompact="yes" ?>
+        <list style="symbols">
+          <t>Power metrics (e.g., time average, min/max)</t>
+          <t>Electrical Energy Provider or Zone</t>
+          <t>Geolocation</t>
+          <t>Future sustainability metrics</t>
+        </list>
+        <?rfc subcompact="no" ?>
+      </t>
+    </section>
       
       <section>
         <name>Requirements Language</name>
