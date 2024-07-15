@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-     draft-rfcxml-general-template-standard-00
-  
-     This template includes examples of the most commonly used features of RFCXML with comments 
-     explaining how to customise them. This template can be quickly turned into an I-D by editing 
-     the examples provided. Look for [REPLACE], [REPLACE/DELETE], [CHECK] and edit accordingly.
-     Note - 'DELETE' means delete the element or attribute, not just the contents.
-     
-     Documentation is at https://authors.ietf.org/en/templates-and-schemas
--->
-<?xml-model href="rfc7991bis.rnc"?>  <!-- Required for schema validation and schema-aware editing -->
-<!-- <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?> -->
-<!-- This third-party XSLT can be enabled for direct transformations in XML processors, including most browsers -->
 
+<?xml-model href="rfc7991bis.rnc"?>
 
 <!DOCTYPE rfc [
   <!ENTITY nbsp    "&#160;">
   <!ENTITY zwsp   "&#8203;">
   <!ENTITY nbhy   "&#8209;">
   <!ENTITY wj     "&#8288;">
+  <!ENTITY RFC.9197 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.9197.xml">
 ]>
-<!-- If further character entities are required then they should be added to the DOCTYPE above.
-     Use of an external entity file is not recommended. -->
 
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -33,20 +20,11 @@
   submissionType="IETF"
   xml:lang="en"
   version="3">
-<!-- [REPLACE] 
-       * docName with name of your draft
-     [CHECK] 
-       * category should be one of std, bcp, info, exp, historic
-       * ipr should be one of trust200902, noModificationTrust200902, noDerivativesTrust200902, pre5378Trust200902
-       * updates can be an RFC number as NNNN
-       * obsoletes can be an RFC number as NNNN 
--->
 
   <front>
     <title abbrev="IOAM E-Impact Extensions">IOAM Extensions for Environmental Information</title>
-    <!--  [REPLACE/DELETE] abbrev. The abbreviated title is required if the full title is longer than 39 characters -->
 
-    <seriesInfo name="Internet-Draft" value="draft-rfcxml-general-template-standard-00 [REPLACE]"/>
+    <seriesInfo name="Internet-Draft" value="draft-rjakhar-eimpact-ioam-00"/>
    
     <author fullname="Romika Jakhar" initials="R." role="editor" surname="Jakhar">
      <organization abbrev="NC State University">North Carolina State University</organization>
@@ -73,35 +51,28 @@
     </author>
    
     <date />
-    <!-- On draft subbmission:
-         * If only the current year is specified, the current day and month will be used.
-         * If the month and year are both specified and are the current ones, the current day will
-           be used
-         * If the year is not the current one, it is necessary to specify at least a month and day="1" will be used.
-    -->
 
     <area>General</area>
     <workgroup>Internet Engineering Task Force</workgroup>
-    <!-- "Internet Engineering Task Force" is fine for individual submissions.  If this element is 
-          not present, the default is "Network Working Group", which is used by the RFC Editor as 
-          a nod to the history of the RFC Series. -->
 
-    <keyword>keyword</keyword>
-    <!-- [REPLACE/DELETE]. Multiple allowed.  Keywords are incorporated into HTML output files for 
-         use by search engines. -->
+    <keyword>ioam</keyword>
+    <keyword>eimpact</keyword>
 
     <abstract>
       <t>
-      This document defines a data structure that can be appended to selected
-      IOAM messages. The IOAM extension defined herein can be used to
-      gain visibility on environmental impact information on the Internet by providing
-      per-hop (i.e., per topological network node) power metrics
-      and other current or future sustainability metrics. This will contribute to achieving
-      an objective mentioned in the IAB E-Impact workshop.
+      In Situ Operations, Administration, and Maintenance (IOAM) is used for recording and 
+      collecting operational and telemetry information while the packet traverses a path 
+      between two points in the network. This document defines a type of IOAM Node Data that 
+      makes use of the Node Data Fields to help an opoerator gain visibility on 
+      environmental sustainability information on the Internet by providing per-hop 
+      (i.e., per topological network node) power metrics and other current or future 
+      sustainability metrics. This will contribute to achieving an objective mentioned 
+      in the IAB E-Impact workshop.
       </t>
       <t>
-      The techniques presented are useful not only in a transactional setting (e.g., a user-issued traceroute or a ping request), but also in a scheduled automated 
-      setting where they may be run periodically in a mesh across an administrative domain to map out environmental-impact metrics.
+      The techniques presented are useful not only in a transactional setting, but also in a 
+      scheduled automated setting where they may be run periodically in a mesh across an 
+      administrative domain to map out environmental-impact metrics.
       </t>
     </abstract>
  
@@ -127,22 +98,34 @@
         for control and management for decades now encounter new 
         requirements including enhancing them to cater to a significantly 
         increasing demand for monitoring the sustainability and environmental 
-        impact. This document serves that need by defining an IOAM extension 
-        object that appends environmental impact information to IOAM messages.
+        impact. This document serves that need by defining an IOAM Node Data 
+        that uses the Node Data Fields to gain visibility on environmental 
+        sustainability information
       </t>
       <t>
-        Using the extension defined herein, a device can explicitly append
-        these exemplary environmental impact metrics for transmission across an 
-        administrative domain:
-        <?rfc subcompact="yes" ?>
-        <list style="symbols">
-          <t>Power metrics (e.g., time average, min/max)</t>
-          <t>Electrical Energy Provider or Zone</t>
-          <t>Geolocation</t>
-          <t>Future sustainability metrics</t>
-        </list>
-        <?rfc subcompact="no" ?>
+        By using the combination of IOAM Data Fields, a device can explicitly add
+        these exemplary environmental sustainability metrics for transmission 
+        across an administrative domain:
       </t>
+      
+      <?rfc subcompact="yes" ?>
+        <ul>
+          <li>Present and idle power (node level, component level)</li>
+          <li>Throughput (node level, component level)</li>
+          <li>Throughput (node level, component level)</li>
+        </ul>
+      <?rfc subcompact="no" ?>
+
+      <t>
+        Additional environmental sustainability metrics, such as the following, for 
+        example, may also be specified in the future:
+      </t>
+      <?rfc subcompact="yes" ?>
+      <ul>
+        <li>Electrical Energy Provider or Zone</li>
+        <li>Geolocation</li>
+      </ul>
+      <?rfc subcompact="no" ?>
     </section>
 
     <section title="Conventions">            
@@ -188,30 +171,6 @@
         </tbody>
       </table>
 
-      <figure>
-        <name>Source [REPLACE]</name>
-        <sourcecode name="suggested filename [REPLACE/DELETE]" type="language [REPLACE/DELETE]" markers="true">
-          <![CDATA[
-source code goes here [REPLACE]
-          ]]>
-        </sourcecode>
-        <!-- [CHECK] markers="true" means that the rendered file will have <CODE BEGINS> and <CODE ENDS> added -->
-      </figure>
-
-      <figure>
-        <name>Diagram [REPLACE]</name>
-        <artset>
-        <!-- This <artset> includes two <artwork> elements, each of a different type -->
-          <artwork type="svg" src="https://www.rfc-editor.org/materials/format/svg/stream.svg" />
-          <!-- [REPLACE] src points to either a local file or a URI. -->
-          <artwork type="ascii-art" name="stream.txt">
-            <!-- [REPLACE/DELETE] name recommends a filename to use if the diagram is extracted -->  
-            <![CDATA[
- ascii-art diagram goes here [REPLACE]
-            ]]>
-          </artwork>
-        </artset>
-      </figure>
     </section>   
     
     <section anchor="IANA">
@@ -237,36 +196,13 @@ source code goes here [REPLACE]
         
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
         <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-        <!-- The recommended and simplest way to include a well known reference -->
+        <!-- <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9197.xml"/> -->
+        &RFC.9197;
         
       </references>
  
       <references>
         <name>Informative References</name>
-       
-        <reference anchor="exampleRefMin">
-        <!-- [REPLACE/DELETE] Example minimum reference -->
-          <front>
-            <title>Title [REPLACE]</title>
-            <author initials="Initials [REPLACE]" surname="Surname [REPLACE]">
-              <organization/>
-            </author>
-            <date year="2006"/>
-            <!-- [CHECK] -->
-          </front>
-        </reference>
-
-        <reference anchor="exampleRefOrg" target="http://www.example.com/">
-        <!-- [REPLACE/DELETE] Example reference written by an organization not a person -->
-          <front>
-            <title>Title [REPLACE]</title>
-            <author>
-              <organization>Organization [REPLACE]</organization>
-            </author>
-            <date year="1984"/>
-            <!-- [CHECK] -->
-          </front>
-        </reference>       
        
       </references>
     </references>
