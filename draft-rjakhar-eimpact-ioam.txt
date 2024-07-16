@@ -1,0 +1,280 @@
+
+
+
+
+Internet Engineering Task Force                           R. Jakhar, Ed.
+Internet-Draft                                              C. Pignataro
+Intended status: Experimental                        NC State University
+Expires: 16 January 2025                                    15 July 2024
+
+
+             IOAM Extensions for Environmental Information
+                     draft-rjakhar-eimpact-ioam-00
+
+Abstract
+
+   In Situ Operations, Administration, and Maintenance (IOAM) is used
+   for recording and collecting operational and telemetry information
+   while the packet traverses a path between two points in the network.
+   This document defines a type of IOAM Node Data that makes use of the
+   Node Data Fields to help an opoerator gain visibility on
+   environmental sustainability information on the Internet by providing
+   per-hop (i.e., per topological network node) power metrics and other
+   current or future sustainability metrics.  This will contribute to
+   achieving an objective mentioned in the IAB E-Impact workshop.
+
+   The techniques presented are useful not only in a transactional
+   setting, but also in a scheduled automated setting where they may be
+   run periodically in a mesh across an administrative domain to map out
+   environmental-impact metrics.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 16 January 2025.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+
+
+
+Jakhar & Pignataro       Expires 16 January 2025                [Page 1]
+
+Internet-Draft          IOAM E-Impact Extensions               July 2024
+
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     2.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
+   3.  Body [REPLACE]  . . . . . . . . . . . . . . . . . . . . . . .   3
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .   4
+   Appendix A.  Appendix 1 [REPLACE/DELETE]  . . . . . . . . . . . .   4
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   In situ Operations, Administration, and Maintenance (IOAM) [RFC9197]
+   collects operational and telemetry information in the packet while
+   the packet traverses a path between two points in the network.  The
+   term "in situ" refers to the fact that the OAM data is added to the
+   data packets rather than being sent within packets specifically
+   dedicated to OAM.  IOAM is used to complement mechanisms, such as
+   Ping or Traceroute.
+
+   As the world transitions towards sustainability in technology, the
+   focus is shifting not only on creating modern technologies infused
+   with sustainability but also on bridging gaps in the tools that are
+   already available, to enhance visibility, measurement, and
+   quantification of their impact.  Consequently, tools which have been
+   foundational for control and management for decades now encounter new
+   requirements including enhancing them to cater to a significantly
+   increasing demand for monitoring the sustainability and environmental
+   impact.  This document serves that need by defining an IOAM Node Data
+   that uses the Node Data Fields to gain visibility on environmental
+   sustainability information
+
+
+
+
+
+Jakhar & Pignataro       Expires 16 January 2025                [Page 2]
+
+Internet-Draft          IOAM E-Impact Extensions               July 2024
+
+
+   By using the combination of IOAM Data Fields, a device can explicitly
+   add these exemplary environmental sustainability metrics for
+   transmission across an administrative domain:
+
+   *  Present and idle power (node level, component level)
+
+   *  Throughput (node level, component level)
+
+   *  Throughput (node level, component level)
+
+   Additional environmental sustainability metrics, such as the
+   following, for example, may also be specified in the future:
+
+   *  Electrical Energy Provider or Zone
+
+   *  Geolocation
+
+2.  Conventions
+
+2.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Body [REPLACE]
+
+   Body text [REPLACE]
+
+   1.  Ordered list item [REPLACE/DELETE]
+
+   *  Bulleted list item [REPLACE/DELETE]
+
+   First term: [REPLACE/DELETE]  Definition of the first term [REPLACE/
+      DELETE]
+
+   Second term: [REPLACE/DELETE]  Definition of the second term
+      [REPLACE/DELETE]
+
+                          +====================+
+                          | Column 1 [REPLACE] |
+                          +====================+
+                          | Cell [REPLACE]     |
+                          +--------------------+
+
+                                 Table 1
+
+
+
+Jakhar & Pignataro       Expires 16 January 2025                [Page 3]
+
+Internet-Draft          IOAM E-Impact Extensions               July 2024
+
+
+4.  IANA Considerations
+
+   This memo includes no request to IANA.  [CHECK]
+
+5.  Security Considerations
+
+   This document should not affect the security of the Internet.
+   [CHECK]
+
+6.  References
+
+6.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC9197]  Brockners, F., Ed., Bhandari, S., Ed., and T. Mizrahi,
+              Ed., "Data Fields for In Situ Operations, Administration,
+              and Maintenance (IOAM)", RFC 9197, DOI 10.17487/RFC9197,
+              May 2022, <https://www.rfc-editor.org/info/rfc9197>.
+
+6.2.  Informative References
+
+Appendix A.  Appendix 1 [REPLACE/DELETE]
+
+   This becomes an Appendix [REPLACE]
+
+Acknowledgements
+
+   This template uses extracts from templates written by Pekka Savola,
+   Elwyn Davies and Henrik Levkowetz.  [REPLACE]
+
+Contributors
+
+   Thanks to all of the contributors.  [REPLACE]
+
+Authors' Addresses
+
+   Romika Jakhar (editor)
+   North Carolina State University
+   United States of America
+   Email: romjakhar@gmail.com, rjakhar@ncsu.edu
+
+
+
+Jakhar & Pignataro       Expires 16 January 2025                [Page 4]
+
+Internet-Draft          IOAM E-Impact Extensions               July 2024
+
+
+   Carlos Pignataro
+   North Carolina State University
+   United States of America
+   Email: cpignata@gmail.com, cmpignat@ncsu.edu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jakhar & Pignataro       Expires 16 January 2025                [Page 5]
