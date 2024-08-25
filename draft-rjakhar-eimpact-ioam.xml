@@ -8,7 +8,16 @@
   <!ENTITY nbhy   "&#8209;">
   <!ENTITY wj     "&#8288;">
   <!ENTITY RFC.9197 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.9197.xml">
+  <!ENTITY RFC.2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+  <!ENTITY RFC.8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
+
 ]>
+
+<?rfc toc="yes"?>
+<?rfc rfcedstyle="yes"?>
+<?rfc subcompact="no" ?>
+<?rfc symrefs="yes"?>
+
 
 <rfc
   xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -22,7 +31,7 @@
   version="3">
 
   <front>
-    <title abbrev="IOAM E-Impact Extensions">IOAM Extensions for Environmental Information</title>
+    <title abbrev="IOAM Environmental Extensions">Environmental Impact Information for In-situ Operations, Administration, and Maintenance (IOAM)</title>
 
     <seriesInfo name="Internet-Draft" value="draft-rjakhar-eimpact-ioam-00"/>
    
@@ -194,9 +203,8 @@
       <references>
         <name>Normative References</name>
         
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-        <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
-        <!-- <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9197.xml"/> -->
+        &RFC.2119;
+        &RFC.8174;
         &RFC.9197;
         
       </references>

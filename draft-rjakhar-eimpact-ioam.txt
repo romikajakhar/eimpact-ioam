@@ -5,10 +5,11 @@
 Internet Engineering Task Force                           R. Jakhar, Ed.
 Internet-Draft                                              C. Pignataro
 Intended status: Experimental                        NC State University
-Expires: 16 January 2025                                    15 July 2024
+Expires: 26 February 2025                                 25 August 2024
 
 
-             IOAM Extensions for Environmental Information
+Environmental Impact Information for In-situ Operations, Administration,
+                         and Maintenance (IOAM)
                      draft-rjakhar-eimpact-ioam-00
 
 Abstract
@@ -43,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 January 2025.
+   This Internet-Draft will expire on 26 February 2025.
 
 Copyright Notice
 
@@ -52,10 +53,9 @@ Copyright Notice
 
 
 
-
-Jakhar & Pignataro       Expires 16 January 2025                [Page 1]
+Jakhar & Pignataro      Expires 26 February 2025                [Page 1]
 
-Internet-Draft          IOAM E-Impact Extensions               July 2024
+Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Jakhar & Pignataro       Expires 16 January 2025                [Page 2]
+Jakhar & Pignataro      Expires 26 February 2025                [Page 2]
 
-Internet-Draft          IOAM E-Impact Extensions               July 2024
+Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
    By using the combination of IOAM Data Fields, a device can explicitly
@@ -149,11 +149,11 @@ Internet-Draft          IOAM E-Impact Extensions               July 2024
 
    *  Bulleted list item [REPLACE/DELETE]
 
-   First term: [REPLACE/DELETE]  Definition of the first term [REPLACE/
-      DELETE]
+   First term: [REPLACE/DELETE]
+      Definition of the first term [REPLACE/DELETE]
 
-   Second term: [REPLACE/DELETE]  Definition of the second term
-      [REPLACE/DELETE]
+   Second term: [REPLACE/DELETE]
+      Definition of the second term [REPLACE/DELETE]
 
                           +====================+
                           | Column 1 [REPLACE] |
@@ -165,9 +165,9 @@ Internet-Draft          IOAM E-Impact Extensions               July 2024
 
 
 
-Jakhar & Pignataro       Expires 16 January 2025                [Page 3]
+Jakhar & Pignataro      Expires 26 February 2025                [Page 3]
 
-Internet-Draft          IOAM E-Impact Extensions               July 2024
+Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
 4.  IANA Considerations
@@ -221,9 +221,9 @@ Authors' Addresses
 
 
 
-Jakhar & Pignataro       Expires 16 January 2025                [Page 4]
+Jakhar & Pignataro      Expires 26 February 2025                [Page 4]
 
-Internet-Draft          IOAM E-Impact Extensions               July 2024
+Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
    Carlos Pignataro
@@ -277,4 +277,4 @@ Internet-Draft          IOAM E-Impact Extensions               July 2024
 
 
 
-Jakhar & Pignataro       Expires 16 January 2025                [Page 5]
+Jakhar & Pignataro      Expires 26 February 2025                [Page 5]
