@@ -5,7 +5,9 @@
 Internet Engineering Task Force                           R. Jakhar, Ed.
 Internet-Draft                                              C. Pignataro
 Intended status: Experimental                        NC State University
-Expires: 2 July 2025                                    29 December 2024
+Expires: 2 July 2025                                      J. Parikh, Ed.
+                                                         Arista Networks
+                                                        29 December 2024
 
 
 Environmental Impact Information for In-situ Operations, Administration,
@@ -46,17 +48,20 @@ Status of This Memo
 
    This Internet-Draft will expire on 2 July 2025.
 
+
+
+
+
+
+Jakhar, et al.             Expires 2 July 2025                  [Page 1]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
 Copyright Notice
 
    Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
-
-
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 1]
-
-Internet-Draft        IOAM Environmental Extensions        December 2024
-
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
@@ -99,20 +104,21 @@ Table of Contents
    allow appending environmental metrics inside the IOAM packet from
    each reported node.
 
+
+
+
+
+
+Jakhar, et al.             Expires 2 July 2025                  [Page 2]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
    And as, In Situ Operations, Administration, and Maintenance (IOAM) is
    used for recording and collecting operational and telemetry
    information while the packet traverses a path between two points in
    the network, using IOAM for delivering environmental sustainability
    metrics is very effective.
-
-
-
-
-
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 2]
-
-Internet-Draft        IOAM Environmental Extensions        December 2024
-
 
                           +====================+
                           | Column 1 [REPLACE] |
@@ -157,18 +163,16 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
    Additional environmental sustainability metrics, such as the
    following, for example, may also be specified in the future:
 
-   *  Electrical Energy Provider or Zone
-
-   *  Geolocation
 
 
-
-
-
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 3]
+Jakhar, et al.             Expires 2 July 2025                  [Page 3]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
+
+   *  Electrical Energy Provider or Zone
+
+   *  Geolocation
 
 3.  Conventions
 
@@ -214,18 +218,18 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
          4 Bits for representing the version of the Environmental
          Information Data Field
 
-      Length:
-         A 24-bit Length to represent the length of entire Data Field
-         Structure which follows this header.  The length field MUST be
-         present and populated with the "number of 4 octect words" in
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 4]
+Jakhar, et al.             Expires 2 July 2025                  [Page 4]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
+      Length:
+         A 24-bit Length to represent the length of entire Data Field
+         Structure which follows this header.  The length field MUST be
+         present and populated with the "number of 4 octect words" in
          the eintire EID-F Object (this will allow us to have a lot of
          data in this env object and won't have any problems as we
          already will have a dedicated object-header which will state
@@ -273,11 +277,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-
-
-
-
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 5]
+Jakhar, et al.             Expires 2 July 2025                  [Page 5]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -333,7 +333,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 6]
+Jakhar, et al.             Expires 2 July 2025                  [Page 6]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -389,7 +389,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 7]
+Jakhar, et al.             Expires 2 July 2025                  [Page 7]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -445,7 +445,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 8]
+Jakhar, et al.             Expires 2 July 2025                  [Page 8]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -501,7 +501,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                  [Page 9]
+Jakhar, et al.             Expires 2 July 2025                  [Page 9]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -557,7 +557,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                 [Page 10]
+Jakhar, et al.             Expires 2 July 2025                 [Page 10]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -613,7 +613,7 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar & Pignataro         Expires 2 July 2025                 [Page 11]
+Jakhar, et al.             Expires 2 July 2025                 [Page 11]
 
 Internet-Draft        IOAM Environmental Extensions        December 2024
 
@@ -645,6 +645,12 @@ Authors' Addresses
    Email: cpignata@gmail.com, cmpignat@ncsu.edu
 
 
+   Jainam Parikh (editor)
+   Arista Networks
+   5453 Great America Parkway
+   Santa Clara,  95035
+   United States of America
+   Email: jainam@parikhgroup.net
 
 
 
@@ -663,10 +669,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-Jakhar & Pignataro         Expires 2 July 2025                 [Page 12]
+Jakhar, et al.             Expires 2 July 2025                 [Page 12]

@@ -59,6 +59,20 @@
         <email>cmpignat@ncsu.edu</email>
       </address>
     </author>
+
+    <author fullname="Jainam Parikh" initials="J." role="editor" surname="Parikh">
+     <organization abbrev="Arista Networks">Arista Networks</organization>
+
+      <address>
+        <postal>
+          <street>5453 Great America Parkway</street>
+          <city>Santa Clara</city>
+          <code>95035</code>
+          <country>US</country>
+        </postal>
+        <email>jainam@parikhgroup.net</email>
+      </address>
+    </author>
    
     <date />
 
