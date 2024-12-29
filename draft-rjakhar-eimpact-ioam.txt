@@ -5,7 +5,7 @@
 Internet Engineering Task Force                           R. Jakhar, Ed.
 Internet-Draft                                              C. Pignataro
 Intended status: Experimental                        NC State University
-Expires: 26 February 2025                                 25 August 2024
+Expires: 2 July 2025                                    29 December 2024
 
 
 Environmental Impact Information for In-situ Operations, Administration,
@@ -27,7 +27,7 @@ Abstract
    The techniques presented are useful not only in a transactional
    setting, but also in a scheduled automated setting where they may be
    run periodically in a mesh across an administrative domain to map out
-   environmental-impact metrics.
+   environmental sustainability metrics.
 
 Status of This Memo
 
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2025.
+   This Internet-Draft will expire on 2 July 2025.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Jakhar & Pignataro      Expires 26 February 2025                [Page 1]
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 1]
 
-Internet-Draft        IOAM Environmental Extensions          August 2024
+Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -69,21 +69,60 @@ Internet-Draft        IOAM Environmental Extensions          August 2024
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     2.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
-   3.  Body [REPLACE]  . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .   4
-   Appendix A.  Appendix 1 [REPLACE/DELETE]  . . . . . . . . . . . .   4
-   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .   4
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+   1.  Motivation  . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  Conventions . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     3.1.  Requirements Language . . . . . . . . . . . . . . . . . .   4
+   4.  Transport Options for Sustainability Information  . . . . . .   4
+   5.  Environmental Information Data Field (EID-F)  . . . . . . . .   4
+   6.  EI-Type Definitions . . . . . . . . . . . . . . . . . . . . .   6
+   7.  Sample Use Case . . . . . . . . . . . . . . . . . . . . . . .   9
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
+   9.  Security Considerations . . . . . . . . . . . . . . . . . . .  11
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  11
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  11
+   Appendix A.  Appendix 1 [REPLACE/DELETE]  . . . . . . . . . . . .  12
+   Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . .  12
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
 
-1.  Introduction
+1.  Motivation
+
+   The IAB held a workshop on "Environmental Impact of Internet
+   Applications and Systems (eimpactws)" [IAB-EIMPACTWS], in which the
+   need for visibility into environmental sustainability metrics within
+   traditional Internet tools was highlighted (see WebVTT cue
+   identifiers 139 and 140 of [IAB-EIMPACTWS-Minutes].)
+
+   The Environmental Information Data Fields defined in this document
+   allow appending environmental metrics inside the IOAM packet from
+   each reported node.
+
+   And as, In Situ Operations, Administration, and Maintenance (IOAM) is
+   used for recording and collecting operational and telemetry
+   information while the packet traverses a path between two points in
+   the network, using IOAM for delivering environmental sustainability
+   metrics is very effective.
+
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 2]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+                          +====================+
+                          | Column 1 [REPLACE] |
+                          +====================+
+                          | Cell [REPLACE]     |
+                          +--------------------+
+
+                                 Table 1
+
+2.  Introduction
 
    In situ Operations, Administration, and Maintenance (IOAM) [RFC9197]
    collects operational and telemetry information in the packet while
@@ -105,15 +144,6 @@ Table of Contents
    that uses the Node Data Fields to gain visibility on environmental
    sustainability information
 
-
-
-
-
-Jakhar & Pignataro      Expires 26 February 2025                [Page 2]
-
-Internet-Draft        IOAM Environmental Extensions          August 2024
-
-
    By using the combination of IOAM Data Fields, a device can explicitly
    add these exemplary environmental sustainability metrics for
    transmission across an administrative domain:
@@ -131,9 +161,18 @@ Internet-Draft        IOAM Environmental Extensions          August 2024
 
    *  Geolocation
 
-2.  Conventions
 
-2.1.  Requirements Language
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 3]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+3.  Conventions
+
+3.1.  Requirements Language
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -141,47 +180,397 @@ Internet-Draft        IOAM Environmental Extensions          August 2024
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Body [REPLACE]
+4.  Transport Options for Sustainability Information
 
-   Body text [REPLACE]
+   ----Add some discussion----
 
-   1.  Ordered list item [REPLACE/DELETE]
+   As discussed above, for transporting environmental sustainability
+   information, we will be using IOAM and will be using the 21st
+   (undefined) bit from the IOAM-Trace-Type field present in the "Pre-
+   allocated and Incremental Trace-Option headers" as discussed in
+   Section 4.4.1. of RFC 9197, to define a new IOAM Data Field.  (same
+   behavour like the 22nd bit for liength) (i.e. tje Node Length will be
+   exculding the Bit 22 Opaque length and Bit 21, Env Obejct length)
+   With this, the processor will know that the actual bits 0-11 are done
+   and can start on the 21st bit with it's own length
 
-   *  Bulleted list item [REPLACE/DELETE]
+5.  Environmental Information Data Field (EID-F)
 
-   First term: [REPLACE/DELETE]
-      Definition of the first term [REPLACE/DELETE]
+   The Environmental Information Data Field Structure contains exactly
+   one Environmental Information Header followed by one or more Data
+   Field objects.  The Data Field objects comprises a EI Object Header
+   and a EI Object Payload.  (EI: Environmental Information)
 
-   Second term: [REPLACE/DELETE]
-      Definition of the second term [REPLACE/DELETE]
+   Environmental Information Header
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |Version|                   Length                      | Resr. |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-                          +====================+
-                          | Column 1 [REPLACE] |
-                          +====================+
-                          | Cell [REPLACE]     |
-                          +--------------------+
+                  Figure 1: Environmental Information Header
 
-                                 Table 1
+      Version:
+         4 Bits for representing the version of the Environmental
+         Information Data Field
+
+      Length:
+         A 24-bit Length to represent the length of entire Data Field
+         Structure which follows this header.  The length field MUST be
+         present and populated with the "number of 4 octect words" in
 
 
 
-Jakhar & Pignataro      Expires 26 February 2025                [Page 3]
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 4]
 
-Internet-Draft        IOAM Environmental Extensions          August 2024
+Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
-4.  IANA Considerations
+         the eintire EID-F Object (this will allow us to have a lot of
+         data in this env object and won't have any problems as we
+         already will have a dedicated object-header which will state
+         the data length anyways) This field will also let the
+         processing node till what size does the EID-F object go to so
+         that it won't accidentally consider the Opaque State Snapshot
+         Data Field as a part of the EID-F.
+
+         ---------DECIDE ON This-----------
+         [-- (Two options, 1 to represent the length of the data as is,
+         in terms of bits, 2. to represent length in terms of number of
+         4 octect words (this will allow us to have a lot of data in
+         this env object and won't have any problems as we already will
+         have a object-header which will state the data length anyways))
+         --]
+
+      Reser.  (Reserved):
+         4 Bits reserbed for future use.
+
+   Environmental Information Object Header
+       0                   1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Length            |   Reserved    | EI-Type=1-255 |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+              Figure 2: Environmental Information Object Header
+
+      Length:
+         A 16-Bit Length field to represent the length of the object,
+         measured in octets, including the object header and object
+         payload.
+
+      Reserved:
+         8 Bits reserbed for future use.
+
+      EI-Type:
+         8 Bits EI-Type field to represent the type of Environmental
+         Information that is present in the following EI-object payload
+
+   Environmental Information Object Payload
+      The object payload will be based on the definitions of the EI-
+      Type.  Discussed in Section 6.
+
+
+
+
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 5]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+6.  EI-Type Definitions
+
+   The Environmental Information Type (EI-Type) will define the
+   structure to carry the Environmental Information Object Payload as
+   discussed in Section 5.
+
+   The following EI-Type values are currently defined.
+
+   Node Power Draw EI-Object
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |            Present Power (32-bit unsigned word)               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Idle Power (32-bit unsigned word)                 |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+                     Figure 3: Node Power Draw EI-Object
+
+      Description:
+         The Present Power is the node-level power being presently
+         drawn, which is a magnitude that may be directly displayed, and
+         is expressed in Watts (W).  A value of 0 indicates that the
+         Present Power is not available.  The Idle Power is the node-
+         level power when the node is idle.  A value of 0 indicates that
+         the Idle Power is not available.
+
+      EI-Type:
+         An EI-Type of 1 are specified.
+
+      Length:
+         The Length is 12 if the object contains this payload.  A Length
+         value of 4 indicates that it is unavailable.
+
+   Node Throughput EI-Object
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Throughput (32-bit unsigned word 1)               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Throughput (32-bit unsigned word 2)               |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+                     Figure 4: Node Throughput EI-Object
+
+      Description:
+
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 6]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+         The returned value is the node-level present throughput, which
+         is a magnitude that may be directly displayed, and is expressed
+         in bits-per-second (BPS).  This allows the recipient of the
+         ICMP message to determine a relationship between power and
+         traffic load.
+
+         This is a 64-bit structure to accomodate high speed interface
+         throughputs as well.
+
+      EI-Type:
+         An EI-Type of 2 are specified.
+
+      Length:
+         The Length is 12 if the object contains this payload.  A Length
+         value of 4 indicates that it is unavailable.
+
+   Ecolabels and Environmentally Relevant Certification (EERC) EI-
+   Object
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |         EERC number           |0 0 0 0|          Year         |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+        Figure 5: Ecolabels and Environmentally Relevant Certification
+                              (EERC) EI- Object
+
+      Description:
+         The returned value references an Ecolabels and Environmentally
+         Relevant Certification (EERC) number.
+
+         The following EERC numbers are defined by the present
+         specification:
+
+         1.  ISO 14001:2015 [EERC-ISO14001-2015]
+         2.  TCO Certified [EERC-TCO]
+         3.  Energy-efficient ethernet [EERC-EEE]
+
+         The "Year" field must contain the year in which the certificate
+         was issued, or 0 to indicate "unknown" or "not specified".
+
+      EI-Type:
+         An EI-Type of 3 are specified.
+
+      Length:
+         The Length is 8 if the object contains this payload.  A Length
+         value of 4 indicates that it is unavailable.
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 7]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+   Component-level Power Draw EI-Object
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 1                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 2                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 3                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 4                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |       Present Component Power (32-bit unsigned word)          |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |        Idle Component Power (32-bit unsigned word)            |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+                Figure 6: Component-level Power Draw EI-Object
+
+      Description:
+         The returned value is one or more instances of component-level
+         power drawn metrics.  Each instance is a set comprised by a
+         UUID [RFC4122] uniquely identifying the component, and the
+         Present Component Power and Idle Component Power fields.
+
+         The Present Component Power is the component-level power being
+         presently drawn, which is a magnitude that may be directly
+         displayed, and is expressed in Watts (W).
+
+         A value of 0 indicates that the Present Component Power is not
+         available.  The Idle Component Power is the component-level
+         power when the component is idle.  A value of 0 indicates that
+         the Idle Component Power is not available.
+
+      EI-Type:
+         An EI-Type of 4 are specified.
+
+      Length:
+         The Length is 4 plus 20 times the number of elements included.
+         A Length value of 4 indicates that this object is unavailable.
+
+   Component-level Throughput EI-Object
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 1                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 2                       |
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 8]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 3                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |                      UUID 32-bit Word 4                       |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Component Throughput (32-bit word 1)              |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+      |             Component Throughput (32-bit word 2)              |
+      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+                Figure 7: Component-level Throughput EI-Object
+
+      Description:
+         The returned value is one or more instances of component-level
+         throughput.  Each instance is a set comprised by a UUID
+         uniquely identifying the component, and the actual throughput
+         of said component in bits-per-second (BPS).  This allows the
+         recipient of the ICMP message to determine a relationship
+         between power and traffic load.
+
+         The Length is 12 if the object contains this payload.  A Length
+         value of 4 indicates that it is unavailable.
+
+      EI-Type:
+         An EI-Type of 5 are specified.
+
+      Length:
+         The Length is 4 plus 24 times the number of elements included.
+         A Length value of 4 indicates that this object is unavailable.
+
+7.  Sample Use Case
+
+   Now that we've defined the Environmental Information Data Field of
+   IOAM, let's have a look on how the Environmental Information Object
+   can be used along with an IOAM packet.
+
+   For our example, let's assume that the node decides to set Bit 1, 11
+   and 21.
+
+   [Referenced from Section 4.4.1 of [RFC9197] and this document]
+
+   Bit 1     When set, indicates the presence of ingress_if_id and
+             egress_if_id (short format) in the node data.
+
+   Bit 11    When set, indicates the presence of buffer occupancy in the
+             node data.
+
+   Bit 21    (this document) When set, indicates the presence of the
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                  [Page 9]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+             Environmental Information node data.
+
+             And the EI Object contains these EI-Types:
+
+             EI-Type 1:  Node Power Draw
+
+             EI-Type 2:  Node Throughput
+
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|        Namespace-ID = DEF     |NodeLen=2| Flags | RemainingLen|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|     ingress_if_id             |         egress_if_id          |  |>B1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|                       buffer occupancy                        |  |>B11
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+| Ver=1 |                   Length=16                   | Resr. |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Length = 4+8=12   |   Reserved    |   EI-Type=1   |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|            Present Power (32-bit unsigned word)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Idle Power (32-bit unsigned word)                 |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |>B21
+|             Length = 4+8=8    |   Reserved    |   EI-Type=2   |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Throughput (32-bit unsigned word 1)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Throughput (32-bit unsigned word 2)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|   Length      |                     Schema ID                 |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|                                                               |  |
+|                                                               |  |>B22
+|                        Opaque data                            |  |
+~                                                               ~  |
+.                                                               .  |
+.                                                               .  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ --
+
+     Figure 8: An IOAM Packet with the Bits 1, 11, 21 and 22 set
+
+   B1 == Bit 1, B11 == Bit 11, B21 == Bit 21 and B22 == Bit 22.
+
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                 [Page 10]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
+
+8.  IANA Considerations
 
    This memo includes no request to IANA.  [CHECK]
 
-5.  Security Considerations
+9.  Security Considerations
 
-   This document should not affect the security of the Internet.
-   [CHECK]
+10.  References
 
-6.  References
-
-6.1.  Normative References
+10.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -197,7 +586,37 @@ Internet-Draft        IOAM Environmental Extensions          August 2024
               and Maintenance (IOAM)", RFC 9197, DOI 10.17487/RFC9197,
               May 2022, <https://www.rfc-editor.org/info/rfc9197>.
 
-6.2.  Informative References
+   [RFC4122]  Leach, P., Mealling, M., and R. Salz, "A Universally
+              Unique IDentifier (UUID) URN Namespace", RFC 4122,
+              DOI 10.17487/RFC4122, July 2005,
+              <https://www.rfc-editor.org/info/rfc4122>.
+
+10.2.  Informative References
+
+   [EERC-ISO14001-2015]
+              "ISO 14001:2015 Environmental management systems.
+              Requirements with guidance for use", September 2015,
+              <https://www.iso.org/standard/60857.html>.
+
+   [EERC-TCO] "TCO Certified", <https://tcocertified.com/>.
+
+   [EERC-EEE] "IEEE Standard for Information technology-- Local and
+              metropolitan area networks-- Specific requirements-- Part
+              3: CSMA/CD Access Method and Physical Layer Specifications
+              Amendment 5: Media Access Control Parameters, Physical
+              Layers, and Management Parameters for Energy-Efficient
+              Ethernet", IEEE Std 802.3az-2010 (Amendment to IEEE Std
+              802.3-2008), 27 October 2010,
+              <https://standards.ieee.org/ieee/802.3az/4270/>.
+
+
+
+
+
+Jakhar & Pignataro         Expires 2 July 2025                 [Page 11]
+
+Internet-Draft        IOAM Environmental Extensions        December 2024
+
 
 Appendix A.  Appendix 1 [REPLACE/DELETE]
 
@@ -218,12 +637,6 @@ Authors' Addresses
    North Carolina State University
    United States of America
    Email: romjakhar@gmail.com, rjakhar@ncsu.edu
-
-
-
-Jakhar & Pignataro      Expires 26 February 2025                [Page 4]
-
-Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
    Carlos Pignataro
@@ -256,25 +669,4 @@ Internet-Draft        IOAM Environmental Extensions          August 2024
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Jakhar & Pignataro      Expires 26 February 2025                [Page 5]
+Jakhar & Pignataro         Expires 2 July 2025                 [Page 12]
