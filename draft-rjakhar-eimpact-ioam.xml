@@ -265,12 +265,12 @@
               A 24-bit Length to represent the length of entire Data Field Structure 
               which follows this header.
               The length field MUST be present and populated with the "number of 4 
-              octect words" in the eintire EID-F Object (this will allow us to have
-              a lot of data in this env object and won't have any problems as we already
-              will have a dedicated object-header which will state the data length anyways)
-              This field will also let the processing node till what size does the
-              EID-F object go to so that it won't accidentally consider the Opaque 
-              State Snapshot Data Field as a part of the EID-F.
+              octect words" in the eintire EID-F Object including the header octet word
+              (this will allow us to have a lot of data in this env object and won't have 
+              any problems as we already will have a dedicated object-header which will 
+              state the data length anyways) This field will also let the processing node till 
+              what size does the EID-F object go to so that it won't accidentally consider 
+              the Opaque State Snapshot Data Field as a part of the EID-F.
               <br /><br />
               ---------DECIDE ON This-----------
               <br />
@@ -744,7 +744,7 @@
             <artwork type="ascii-art" name="SampleIOAMPacketWithEI.txt" align="center">
               <![CDATA[
 
- 0                   1                   2                   3
+                     1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |        Namespace-ID = DEF     |NodeLen=2| Flags | RemainingLen|
@@ -755,7 +755,7 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
 |                       buffer occupancy                        |  |>B11
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
-| Ver=1 |                   Length=16                   | Resr. |  |
+| Ver=1 |                   Length=28                   | Resr. |  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
 |             Length = 4+8=12   |   Reserved    |   EI-Type=1   |  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
@@ -786,6 +786,17 @@
         <t>
           B1 == Bit 1, B11 == Bit 11, B21 == Bit 21 and B22 == Bit 22.
         </t>
+        <t>
+          Here, the Environmental Information Data Field starts from the 
+          17th octet and goes upto the 44th octet. And hence the length field
+          of the Environmental Information Header is set to 28 i.e. 28 octets
+          including the octets of the header.
+        </t>
+        <t>
+          We can see that in this Data Field, two types of sub-objects, EI-Type 1
+          and EI-Type 2, with their own headers and payloads.
+        </t>
+
     </section>  
     
     <section anchor="IANA">
