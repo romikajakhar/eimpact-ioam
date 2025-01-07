@@ -1,0 +1,12 @@
+Why IOAM
+    Different seperate ICMP or otehr potocol
+    But IAOM in in place. So, it takes the data aplane and not control plane.
+    So, it emulates Data Plane
+
+What takes precedence in confusion, NodeLength or Trace Type Bits?
+
+How will the node choose what c-types to append
+
+Do we define 21st bit dedicated for E-info varoable or Namespace specific variabled aata
+
+Length calculation criteria

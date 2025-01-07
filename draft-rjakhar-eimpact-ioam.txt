@@ -5,9 +5,9 @@
 Internet Engineering Task Force                           R. Jakhar, Ed.
 Internet-Draft                                              C. Pignataro
 Intended status: Experimental                        NC State University
-Expires: 2 July 2025                                      J. Parikh, Ed.
+Expires: 10 July 2025                                     J. Parikh, Ed.
                                                          Arista Networks
-                                                        29 December 2024
+                                                          6 January 2025
 
 
 Environmental Impact Information for In-situ Operations, Administration,
@@ -46,21 +46,21 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 July 2025.
+   This Internet-Draft will expire on 10 July 2025.
 
 
 
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 1]
+Jakhar, et al.            Expires 10 July 2025                  [Page 1]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 2]
+Jakhar, et al.            Expires 10 July 2025                  [Page 2]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
    And as, In Situ Operations, Administration, and Maintenance (IOAM) is
@@ -165,9 +165,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 3]
+Jakhar, et al.            Expires 10 July 2025                  [Page 3]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
    *  Electrical Energy Provider or Zone
@@ -221,9 +221,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 4]
+Jakhar, et al.            Expires 10 July 2025                  [Page 4]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
       Length:
@@ -277,9 +277,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 5]
+Jakhar, et al.            Expires 10 July 2025                  [Page 5]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
 6.  EI-Type Definitions
@@ -333,9 +333,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 6]
+Jakhar, et al.            Expires 10 July 2025                  [Page 6]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
          The returned value is the node-level present throughput, which
@@ -389,9 +389,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 7]
+Jakhar, et al.            Expires 10 July 2025                  [Page 7]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
    Component-level Power Draw EI-Object
@@ -445,9 +445,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 8]
+Jakhar, et al.            Expires 10 July 2025                  [Page 8]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -486,8 +486,8 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
    IOAM, let's have a look on how the Environmental Information Object
    can be used along with an IOAM packet.
 
-   For our example, let's assume that the node decides to set Bit 1, 11
-   and 21.
+   For our example, let's assume that the node decides to set Bit 1, 11,
+   21 and 22.
 
    [Referenced from Section 4.4.1 of [RFC9197] and this document]
 
@@ -501,9 +501,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-Jakhar, et al.             Expires 2 July 2025                  [Page 9]
+Jakhar, et al.            Expires 10 July 2025                  [Page 9]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
              Environmental Information node data.
@@ -514,12 +514,15 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
              EI-Type 2:  Node Throughput
 
+   Bit 22    When set, indicates the presence of the variable-length
+             Opaque State Snapshot field.
+
                      1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |        Namespace-ID = DEF     |NodeLen=2| Flags | RemainingLen|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
+|0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
 |     ingress_if_id             |         egress_if_id          |  |>B1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
@@ -551,16 +554,15 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
      Figure 8: An IOAM Packet with the Bits 1, 11, 21 and 22 set
 
-   B1 == Bit 1, B11 == Bit 11, B21 == Bit 21 and B22 == Bit 22.
 
 
 
-
-
-Jakhar, et al.             Expires 2 July 2025                 [Page 10]
+Jakhar, et al.            Expires 10 July 2025                 [Page 10]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
+
+   B1 == Bit 1, B11 == Bit 11, B21 == Bit 21 and B22 == Bit 22.
 
    Here, the Environmental Information Data Field starts from the 17th
    octet and goes upto the 44th octet.  And hence the length field of
@@ -611,11 +613,9 @@ Internet-Draft        IOAM Environmental Extensions        December 2024
 
 
 
-
-
-Jakhar, et al.             Expires 2 July 2025                 [Page 11]
+Jakhar, et al.            Expires 10 July 2025                 [Page 11]
 
-Internet-Draft        IOAM Environmental Extensions        December 2024
+Internet-Draft        IOAM Environmental Extensions         January 2025
 
 
    [EERC-EEE] "IEEE Standard for Information technology-- Local and
@@ -669,4 +669,4 @@ Authors' Addresses
 
 
 
-Jakhar, et al.             Expires 2 July 2025                 [Page 12]
+Jakhar, et al.            Expires 10 July 2025                 [Page 12]

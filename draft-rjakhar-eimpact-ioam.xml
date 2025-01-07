@@ -687,7 +687,7 @@
       </t>
 
       <t>
-        For our example, let's assume that the node decides to set Bit 1, 11 and 21.
+        For our example, let's assume that the node decides to set Bit 1, 11, 21 and 22.
       </t>
 
       <t>[Referenced from <xref target="RFC9197" sectionFormat="of" section="4.4.1"/> and this document]</t>
@@ -736,6 +736,14 @@
             </dd>
           </dl>
         </dd>
+
+        <dt>
+          Bit 22
+        </dt>
+        <dd>
+          When set, indicates the presence of the variable-length
+          Opaque State Snapshot field.
+        </dd>
       </dl>
 
         <figure anchor="sample">
@@ -749,7 +757,7 @@
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |        Namespace-ID = DEF     |NodeLen=2| Flags | RemainingLen|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
+|0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
 |     ingress_if_id             |         egress_if_id          |  |>B1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
