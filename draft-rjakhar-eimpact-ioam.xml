@@ -10,6 +10,7 @@
   <!ENTITY RFC.9197 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.9197.xml">
   <!ENTITY RFC.2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
   <!ENTITY RFC.8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
+  <!ENTITY RFC.4122 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4122.xml">
 
 ]>
 
@@ -58,6 +59,20 @@
         <email>cmpignat@ncsu.edu</email>
       </address>
     </author>
+
+    <author fullname="Jainam Parikh" initials="J." role="editor" surname="Parikh">
+     <organization abbrev="Arista Networks">Arista Networks</organization>
+
+      <address>
+        <postal>
+          <street>5453 Great America Parkway</street>
+          <city>Santa Clara</city>
+          <code>95035</code>
+          <country>US</country>
+        </postal>
+        <email>jainam@parikhgroup.net</email>
+      </address>
+    </author>
    
     <date />
 
@@ -81,7 +96,7 @@
       <t>
       The techniques presented are useful not only in a transactional setting, but also in a 
       scheduled automated setting where they may be run periodically in a mesh across an 
-      administrative domain to map out environmental-impact metrics.
+      administrative domain to map out environmental sustainability metrics.
       </t>
     </abstract>
  
@@ -89,6 +104,39 @@
 
   <middle>
     
+    <section anchor="motivation">
+      <name>Motivation</name>
+      <t>
+        The IAB held a workshop on "Environmental Impact of Internet
+        Applications and Systems (eimpactws)" [IAB-EIMPACTWS], in which the
+        need for visibility into environmental sustainability metrics within
+        traditional Internet tools was highlighted (see WebVTT cue identifiers 
+        139 and 140 of [IAB-EIMPACTWS-Minutes].)
+      </t>
+      <t>
+        The Environmental Information Data Fields defined in this document 
+        allow appending environmental metrics inside the IOAM packet from 
+        each reported node.
+      </t>
+      <t>
+        And as, In Situ Operations, Administration, and Maintenance (IOAM) is used
+        for recording and collecting operational and telemetry information while 
+        the packet traverses a path between two points in the network, using IOAM
+        for delivering environmental sustainability metrics is very effective.
+      </t>  
+      
+      <table>
+        <thead>
+        <!-- [REPLACE/DELETE] a table header is optional -->
+          <tr><th>Column 1 [REPLACE]</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cell [REPLACE]</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+
     <section anchor="intro" title="Introduction">
       <t>
         In situ Operations, Administration, and Maintenance (IOAM) <xref target="RFC9197" /> 
@@ -150,37 +198,614 @@
       <!-- [CHECK] The 'Requirements Language' section is optional -->
     </section>
     
-    <section>
-      <name>Body [REPLACE]</name>
-      <t>Body text [REPLACE]</t>
-      
-      <ol>
-        <li>Ordered list item [REPLACE/DELETE]</li>
-      </ol>
-      
-      <ul>
-        <li>Bulleted list item [REPLACE/DELETE]</li>
-      </ul>
-      
-      <dl newline="true">
-        <!-- Omit newline="true" if you want each definition to start on the same line as the corresponding term -->
-        <dt>First term: [REPLACE/DELETE]</dt>
-        <dd>Definition of the first term [REPLACE/DELETE]</dd>
-        <dt>Second term: [REPLACE/DELETE]</dt>
-        <dd>Definition of the second term [REPLACE/DELETE]</dd>
-      </dl>
-      
-      <table>
-        <thead>
-        <!-- [REPLACE/DELETE] a table header is optional -->
-          <tr><th>Column 1 [REPLACE]</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Cell [REPLACE]</td></tr>
-        </tbody>
-      </table>
+    <section anchor="susinfo-transport-options">
+      <name>Transport Options for Sustainability Information</name>
+      <t>
+        ----Add some discussion----
+      </t>
+      <t>
+        As discussed above, for transporting environmental sustainability
+        information, we will be using IOAM and will be using the 21st (undefined)
+        bit from the IOAM-Trace-Type field present in the "Pre-allocated and 
+        Incremental Trace-Option headers" as discussed in Section 4.4.1. of 
+        RFC 9197, to define a new IOAM Data Field.
 
-    </section>   
+        (same behavour like the 22nd bit for liength) (i.e. tje Node Length will
+        be exculding the Bit 22 Opaque length and Bit 21, Env Obejct length)
+        With this, the processor will know that the actual bits 0-11 are done and
+        can start on the 21st bit with it's own length
+      </t>
+    </section>
+
+    <section anchor="env-info-data-field">
+      <name>Environmental Information Data Field (EID-F)</name>
+
+      <t>
+        The Environmental Information Data Field Structure contains 
+        exactly one Environmental Information Header followed by one 
+        or more Data Field objects. The Data Field objects comprises 
+        a EI Object Header and a EI Object Payload.
+        (EI: Environmental Information)
+      </t>
+
+      <dl newline="true" spacing="normal">
+        <dt>
+          Environmental Information Header
+        </dt>
+        <dd>
+          <figure anchor="env-info-header">
+            <name>Environmental Information Header</name>
+            <artset>
+              <artwork type="ascii-art" name="EnvironmentalInformationHeader.txt" align="center">
+                <![CDATA[
+ 
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Version|                   Length                      | Resr. |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+    
+          <dl newline="true" spacing="normal">
+            <dt>
+              Version:
+            </dt>
+            <dd>
+              4 Bits for representing the version of the Environmental Information
+              Data Field
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              A 24-bit Length to represent the length of entire Data Field Structure 
+              which follows this header.
+              The length field MUST be present and populated with the "number of 4 
+              octect words" in the eintire EID-F Object including the header octet word
+              (this will allow us to have a lot of data in this env object and won't have 
+              any problems as we already will have a dedicated object-header which will 
+              state the data length anyways) This field will also let the processing node till 
+              what size does the EID-F object go to so that it won't accidentally consider 
+              the Opaque State Snapshot Data Field as a part of the EID-F.
+              <br /><br />
+              ---------DECIDE ON This-----------
+              <br />
+              [-- (Two options,
+              1 to represent the length of the data as is, in terms of bits,
+              2. to represent length in terms of number of 4 octect words (this will
+              allow us to have a lot of data in this env object and won't have any problems
+              as we already will have a object-header which will state the data length anyways)) --]
+            </dd>
+            <dt>
+              Reser. (Reserved):
+            </dt>
+            <dd>
+              4 Bits reserbed for future use.
+            </dd>
+          </dl>
+        </dd>
+        
+        <dt>
+          Environmental Information Object Header
+        </dt>
+        <dd>
+          <figure anchor="env-info-obj-header">
+            <name>Environmental Information Object Header</name>
+            <artset>
+              <artwork type="ascii-art" name="EnvironmentalInformationObjectHeader.txt" align="center">
+                <![CDATA[
+ 
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Length            |   Reserved    | EI-Type=1-255 |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              <t>
+                A 16-Bit Length field to represent the length
+                of the object, measured in octets, including the object
+                header and object payload.
+              </t>
+            </dd>
+    
+            <dt>
+              Reserved:
+            </dt>
+            <dd>
+              8 Bits reserbed for future use.
+            </dd>
+
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              <t>
+                8 Bits EI-Type field to represent the type of Environmental 
+                Information that is present in the following EI-object payload
+              </t>
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Environmental Information Object Payload
+        </dt>
+        <dd>
+          The object payload will be based on the definitions of the EI-Type.
+          Discussed in <xref target="ei-type-def" />.
+        </dd>
+      </dl>
+    </section>
+
+    <section anchor="ei-type-def">
+      <name>EI-Type Definitions</name>
+
+      <t>
+        The Environmental Information Type (EI-Type) will define the structure to carry the
+        Environmental Information Object Payload as discussed in <xref target="env-info-data-field" />.
+      </t>
+
+      <t>The following EI-Type values are currently defined.</t>
+
+      <dl newline="true" spacing="normal">
+        <dt>
+          Node Power Draw EI-Object
+        </dt>
+        <dd>
+          <figure anchor="ei-type-1">
+            <name>Node Power Draw EI-Object</name>
+            <artset>
+              <artwork type="ascii-art" name="NodePowerDrawEI-Object.txt" align="center">
+                <![CDATA[
+ 
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|            Present Power (32-bit unsigned word)               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Idle Power (32-bit unsigned word)                 |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Description:
+            </dt>
+            <dd>
+              <t>
+                The Present Power is the node-level power being presently drawn, 
+                which is a magnitude that may be directly displayed, and is 
+                expressed in Watts (W). A value of 0 indicates that the
+                Present Power is not available. The Idle Power is the
+                node-level power when the node is idle. A value of 0 indicates
+                that the Idle Power is not available.
+              </t>
+            </dd>
+            
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              An EI-Type of 1 are specified.
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              <t>
+                The Length is 12 if the object contains this payload. 
+                A Length value of 4 indicates that it is unavailable.
+              </t>
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Node Throughput EI-Object
+        </dt>
+        <dd>
+          <figure anchor="ei-type-2">
+            <name>Node Throughput EI-Object</name>
+            <artset>
+              <artwork type="ascii-art" name="NodeThroughputEI-Object.txt" align="center">
+                <![CDATA[
+ 
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Throughput (32-bit unsigned word 1)               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Throughput (32-bit unsigned word 2)               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Description:
+            </dt>
+            <dd>
+              <t>
+                The returned value is the node-level present throughput, 
+                which is a magnitude that may be directly displayed, and 
+                is expressed in bits-per-second (BPS). This allows the 
+                recipient of the ICMP message to determine a relationship 
+                between power and traffic load.
+              </t>
+              <t>
+                This is a 64-bit structure to accomodate high speed interface
+                throughputs as well.
+              </t>
+            </dd>
+            
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              An EI-Type of 2 are specified.
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              The Length is 12 if the object contains this payload.
+              A Length value of 4 indicates that it is unavailable.
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Ecolabels and Environmentally Relevant Certification (EERC) EI-Object
+        </dt>
+        <dd>
+          <figure anchor="ei-type-3">
+            <name>Ecolabels and Environmentally Relevant Certification (EERC) EI-Object</name>
+            <artset>
+              <artwork type="ascii-art" name="EERCEI-Object.txt" align="center">
+                <![CDATA[
+ 
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|         EERC number           |0 0 0 0|          Year         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Description:
+            </dt>
+            <dd>
+              <t>
+                The returned value references an Ecolabels and 
+                Environmentally Relevant Certification (EERC) number.
+              </t>
+            
+              <t>
+                The following EERC numbers are defined by the present 
+                specification:
+              </t>
+              <ol type="1" spacing="compact">
+                <li>ISO 14001:2015 <xref target="EERC-ISO14001-2015" /></li>
+                <li>TCO Certified <xref target="EERC-TCO" /></li>
+                <li>Energy-efficient ethernet <xref target="EERC-EEE" /></li>
+              </ol>
+              <t>
+                The "Year" field must contain the year in which the certificate 
+                was issued, or 0 to indicate "unknown" or "not specified".
+              </t>
+            </dd>
+            
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              An EI-Type of 3 are specified.
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              The Length is 8 if the object contains this payload.
+              A Length value of 4 indicates that it is unavailable.
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Component-level Power Draw EI-Object
+        </dt>
+        <dd>
+          <figure anchor="ei-type-4">
+            <name>Component-level Power Draw EI-Object</name>
+            <artset>
+              <artwork type="ascii-art" name="ComponentLevelPowerDrawEI-Object.txt" align="center">
+                <![CDATA[
+ 
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 1                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 2                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 3                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 4                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|       Present Component Power (32-bit unsigned word)          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|        Idle Component Power (32-bit unsigned word)            |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Description:
+            </dt>
+            <dd>
+              <t>
+                The returned value is one or more instances of component-level 
+                power drawn metrics. Each instance is a set comprised by a 
+                UUID <xref target="RFC4122" /> uniquely identifying the component, and
+                the Present Component Power and Idle Component Power fields.
+              </t>
+              <t>
+                The Present Component Power is the component-level power being
+                presently drawn, which is a magnitude that may be directly displayed,
+                and is expressed in Watts (W). 
+              </t>
+              <t>
+                A value of 0 indicates that the
+                Present Component Power is not available. The Idle Component Power
+                is the component-level power when the component is idle. A value
+                of 0 indicates that the Idle Component Power is not available.
+              </t>
+            </dd>
+            
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              An EI-Type of 4 are specified.
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              The Length is 4 plus 20 times the number of 
+              elements included. A Length value of 4 indicates that
+              this object is unavailable.
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Component-level Throughput EI-Object
+        </dt>
+        <dd>
+          <figure anchor="ei-type-5">
+            <name>Component-level Throughput EI-Object</name>
+            <artset>
+              <artwork type="ascii-art" name="ComponentLevelThroughputEI-Object.txt" align="center">
+                <![CDATA[
+ 
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 1                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 2                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 3                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      UUID 32-bit Word 4                       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Component Throughput (32-bit word 1)              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|             Component Throughput (32-bit word 2)              |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                ]]>
+              </artwork>
+            </artset>
+          </figure>
+
+          <dl newline="true" spacing="normal">
+            <dt>
+              Description:
+            </dt>
+            <dd>
+              <t>
+                The returned value is one or more instances of component-level 
+                throughput. Each instance is a set comprised by a UUID uniquely 
+                identifying the component, and the actual throughput of said 
+                component in bits-per-second (BPS). This allows the recipient 
+                of the ICMP message to determine a relationship between power 
+                and traffic load.
+              </t>
+              <t>
+                The Length is 12 if the object contains this payload.
+                A Length value of 4 indicates that it is unavailable.
+              </t>
+            </dd>
+            
+            <dt>
+              EI-Type:
+            </dt>
+            <dd>
+              An EI-Type of 5 are specified.
+            </dd>
+    
+            <dt>
+              Length:
+            </dt>
+            <dd>
+              The Length is 4 plus 24 times the number of elements included. 
+              A Length value of 4 indicates that this object is unavailable.
+            </dd>
+          </dl>
+        </dd>
+
+      </dl>
+    </section>
+
+    <section anchor="sample-use-case">
+      <name>Sample Use Case</name>
+
+      <t>
+        Now that we've defined the Environmental Information Data Field of IOAM, let's 
+        have a look on how the Environmental Information Object can be used along with
+        an IOAM packet.
+      </t>
+
+      <t>
+        For our example, let's assume that the node decides to set Bit 1, 11, 21 and 22.
+      </t>
+
+      <t>[Referenced from <xref target="RFC9197" sectionFormat="of" section="4.4.1"/> and this document]</t>
+      <dl newline="false" spacing="normal" indent="10" >
+        <dt>
+          Bit 1
+        </dt>
+        <dd>
+          When set, indicates the presence of
+          ingress_if_id and egress_if_id (short format) in the node
+          data.
+        </dd>
+
+        <dt>
+          Bit 11
+        </dt>
+        <dd>
+          When set, indicates the presence of buffer occupancy in
+          the node data.
+        </dd>
+
+        <dt>
+          Bit 21
+        </dt>
+        <dd>
+          <t>
+            (this document) When set, indicates the presence of the
+            Environmental Information node data.
+          </t>
+          <t>
+            And the EI Object contains these EI-Types:
+          </t>
+          <dl>
+            <dt>
+              EI-Type 1:
+            </dt>
+            <dd>
+              Node Power Draw
+            </dd>
+
+            <dt>
+              EI-Type 2:
+            </dt>
+            <dd>
+              Node Throughput
+            </dd>
+          </dl>
+        </dd>
+
+        <dt>
+          Bit 22
+        </dt>
+        <dd>
+          When set, indicates the presence of the variable-length
+          Opaque State Snapshot field.
+        </dd>
+      </dl>
+
+        <figure anchor="sample">
+          <name>An IOAM Packet with the Bits 1, 11, 21 and 22 set</name>
+          <artset>
+            <artwork type="ascii-art" name="SampleIOAMPacketWithEI.txt" align="center">
+              <![CDATA[
+
+                     1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|        Namespace-ID = DEF     |NodeLen=2| Flags | RemainingLen|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0|   Reserved    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|     ingress_if_id             |         egress_if_id          |  |>B1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|                       buffer occupancy                        |  |>B11
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+| Ver=1 |                   Length=28                   | Resr. |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Length = 4+8=12   |   Reserved    |   EI-Type=1   |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|            Present Power (32-bit unsigned word)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Idle Power (32-bit unsigned word)                 |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |>B21
+|             Length = 4+8=8    |   Reserved    |   EI-Type=2   |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Throughput (32-bit unsigned word 1)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|             Throughput (32-bit unsigned word 2)               |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ -+
+|   Length      |                     Schema ID                 |  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+  |
+|                                                               |  |
+|                                                               |  |>B22
+|                        Opaque data                            |  |
+~                                                               ~  |
+.                                                               .  |
+.                                                               .  |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ --
+                      ]]>
+            </artwork>
+          </artset>
+        </figure>
+
+        <t>
+          B1 == Bit 1, B11 == Bit 11, B21 == Bit 21 and B22 == Bit 22.
+        </t>
+        <t>
+          Here, the Environmental Information Data Field starts from the 
+          17th octet and goes upto the 44th octet. And hence the length field
+          of the Environmental Information Header is set to 28 i.e. 28 octets
+          including the octets of the header.
+        </t>
+        <t>
+          We can see that in this Data Field, two types of sub-objects, EI-Type 1
+          and EI-Type 2, with their own headers and payloads.
+        </t>
+
+    </section>  
     
     <section anchor="IANA">
     <!-- All drafts are required to have an IANA considerations section. See RFC 8126 for a guide.-->
@@ -188,10 +813,8 @@
       <t>This memo includes no request to IANA. [CHECK]</t>
     </section>
     
-    <section anchor="Security">
-      <!-- All drafts are required to have a security considerations section. See RFC 3552 for a guide. -->
+    <section anchor="security-consid">
       <name>Security Considerations</name>
-      <t>This document should not affect the security of the Internet. [CHECK]</t>
     </section>
     
     <!-- NOTE: The Acknowledgements and Contributors sections are at the end of this template -->
@@ -206,11 +829,36 @@
         &RFC.2119;
         &RFC.8174;
         &RFC.9197;
+        &RFC.4122;
         
       </references>
  
       <references>
         <name>Informative References</name>
+
+        <reference anchor="EERC-ISO14001-2015" target="https://www.iso.org/standard/60857.html">
+          <front>
+            <title>ISO 14001:2015 Environmental management systems. Requirements with guidance for use</title>
+            <author initials="" surname="" fullname="International Organisation for Standardisation"></author>
+            <date month="September" year="2015"/>
+          </front>
+        </reference>
+
+        <reference anchor="EERC-TCO" target="https://tcocertified.com/">
+          <front>
+            <title>TCO Certified</title>
+            <author initials="" surname="" fullname="Swedish Confederation of Professional Employees (TCO)"></author>
+          </front>
+        </reference>
+
+        <reference anchor="EERC-EEE" target="https://standards.ieee.org/ieee/802.3az/4270/">
+          <front>
+            <title>IEEE Standard for Information technology-- Local and metropolitan area networks-- Specific requirements-- Part 3: CSMA/CD Access Method and Physical Layer Specifications Amendment 5: Media Access Control Parameters, Physical Layers, and Management Parameters for Energy-Efficient Ethernet</title>
+            <author initials="" surname="" fullname="International Organisation for Standardisation"></author>
+            <date month="October" day="27" year="2010"/>
+          </front>
+          <seriesInfo name="IEEE Std" value=" 802.3az-2010 (Amendment to IEEE Std 802.3-2008)" />
+        </reference>
        
       </references>
     </references>
